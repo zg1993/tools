@@ -61,6 +61,7 @@
  + alt+w(copy)/ctrl+w(cut)
  + ctrl+y (paste)
 - 重复上一个命令: ctrl-x z
+- 跳转到指定行
 # 3、Sublime
 ### 3.1 Key Binding
 - split screen: alt+Shift+2
