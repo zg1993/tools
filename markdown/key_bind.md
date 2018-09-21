@@ -11,6 +11,7 @@
      - save ctrl-i
 
 ### 1.2、MarkDown基本语法：
+
 加粗、斜体
 - *dan*
 - _data_
@@ -49,6 +50,7 @@
 
 # 2、Emacs
 ### 2.1 Key Binding
+- switch Shell: alt+x shell
 - split screen: alt+x 3
 - switch screen: ctrl+x o
 - manual: ctrl+h t
