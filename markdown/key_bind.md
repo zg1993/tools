@@ -71,6 +71,7 @@
 
 # 4、Git
 ### 4.1 Command
+- ssh-keygen copy pub->setting ssh key
 - 添加一个远程库：git remote add origin git@github.com:name/project.git
 - 第一次push：git push -u origin master
 - 新建分支后关联远程分支：
