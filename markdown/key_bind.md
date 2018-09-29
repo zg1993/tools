@@ -67,6 +67,7 @@
 - split screen: alt+Shift+2
 - switch screen: ctrl+k ctrl+p(n) (like Atom)
 - pageup: ctrl+k ctrl+f
+- 回到上一个页面: alt+-
 
 # 4、Git
 ### 4.1 Command
