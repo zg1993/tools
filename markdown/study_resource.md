@@ -6,3 +6,6 @@
 
 ## Task
 - emacs autocompletion 选择换成ctrl-n
+- 30-09-2018
+ * hbase 过滤器 (正则匹配)
+ * python unittest

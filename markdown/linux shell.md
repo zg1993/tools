@@ -24,3 +24,15 @@
 ### 2.进程相关
 - jobs: 查看后台运行进程
 - fg %jobnumber: 将后台运行的命令掉至前台
+
+
+### 3.常用功能
+- 查看局域网内的所有ip
+  + cat /proc/net/arp 查看arp缓存表
+  + nmap -sP 192.168.1.0/24 进行ping扫描
+- 访问共享文件：smb://ip
+- 查看软件安装位置： which virtualbox， locate VBox
+
+### 4.expand
+- /sbin/: 基本的系统命令 （只有管理员能运行）
+- /bin/：普通的基本命令
