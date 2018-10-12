@@ -32,6 +32,10 @@
   + nmap -sP 192.168.1.0/24 进行ping扫描
 - 访问共享文件：smb://ip
 - 查看软件安装位置： which virtualbox， locate VBox
+- 通过端口号查找进程： lsof -i:port
+ + fd: 111u (u表示文件被打开并处于读取/写入模式 大写的w应用程序对整个文件的写锁)
+- scp文件拷贝
+ + 远程到本地： scp root@tmqtt:/root/soft/hadoop-2.8.0.tar.gz  /home/zhou/software/
 
 ### 4.expand
 - /sbin/: 基本的系统命令 （只有管理员能运行）
