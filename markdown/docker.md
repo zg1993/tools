@@ -1,0 +1,114 @@
+### 安装配置
+##### Ubuntu 安装 Docker CE
+
+
+##### 用户添加到group分组
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+注销重新登陆
+
+#### 镜像加速
+* [Docker 官方提供的中国 registry mirror `https://registry.docker-cn.com`](https://docs.docker.com/registry/recipes/mirror/#use-case-the-china-registry-mirror)
+* [七牛云加速器 `https://reg-mirror.qiniu.com/`](https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror)
+
+**upstart系统**: /etc/default/docker:
+``` bash
+ DOCKER_OPTS="--registry-mirror=https://registry.docker-cn.com"
+```
+重新启动服务
+```bash
+$ sudo service docker restart
+```
+
+**systemd系统**: /etc/docker/daemon.json
+```json
+{
+  "registry-mirrors": [
+    "https://registry.docker-cn.com"
+  ]
+}
+```
+重启服务
+```bash
+$ sudo systemctl deamon-reload
+$ sudo service docker restartn
+```
+### 1.指令
+- 列出镜像: docker image ls
+- 查找镜像: docker search mirror-name
+- 获取镜像: docker pull python:2.7
+- 删除镜像: docker image rm docker  ID、镜像名、摘要
+- 去除为none的镜像: docker image prune
+- 启动镜像: docker run python:2.7
+ * -d: 后台运行
+ * --rm: 运行完后删除 container
+ * -p <localhost:port>:<container:port>
+- 列出所有正在运行的容器: docker ps
+    + 列出所有容器: docker ps -a
+- 列出docker的容器: docker container ls
+- 启动容器: docker start <name\>
+- 暂停容器: docker stop <name\>
+- 删除容器: docker rm <name\> (容器必须是停止状态)
+- 构建镜像: docker build -t hello .
+  + -t tag options
+  + -f 指定Dockerfile
+  + . 镜像构建的上下文
+
+
+### 2.compose
+##### install
+```bash
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+##### 命令
+- 启动 docker-compose up
+
+
+### 配置文件事例
+
+#### Dockerfile
+``` python
+# Use an official Python runtime as a parent image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+#### .dcokerignore
+```bash
+.git
+front 忽略目录front
+tools
+uitest
+sandbox
+*.pyc
+
+*/* 忽略所以
+!back back文件或者目录除外
+!common
+```
+
+### frequent question answer
+```
+Traceback (most recent call last):
+  File "/root/moses/back/bms/bms_server.py", line 9, in <module>
+    from web.server import configure, configure_options
+ImportError: No module named web.server
+```
+python的site-packages目录添加moses.pth: /root/moses/back
