@@ -6,3 +6,9 @@
 
 ## Task
 - emacs autocompletion 选择换成ctrl-n
+- Postman 历史请求和查询接口断言
+
+## abbreviation
+- GUI: graphical user interface
+- RPC: remote procedure call
+- REST: repersentational state transfer
