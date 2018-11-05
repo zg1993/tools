@@ -16,3 +16,7 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 
       time.strftime(format, time.localtime(timestamp))
       datetime.utcfromtimestamp(timestamp).strftime(format)
+
+- 字符串转化为时间戳
+
+      time.mktime(time.strptime('18-10-23 16-12-32', '%y-%m-%d %H-%M-%S'))

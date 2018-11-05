@@ -1,4 +1,4 @@
-### 安装配置
+### 一.安装配置
 ##### Ubuntu 安装 Docker CE
 
 
@@ -33,6 +33,14 @@ $ sudo service docker restart
 $ sudo systemctl deamon-reload
 $ sudo service docker restartn
 ```
+#### 私人仓库搭建
+
+- 启动:docker run -d -p 5000:5000 -v /home/zhou/registry/:/var/lib/registry --name registry registry
+- 查看仓库镜像: curl 127.0.0.1:5000/v2/_catalog
+- 标记镜像: docker tag alpine:latest 127.0.0.1:5000/alpine:latest
+- 推送镜像: docker push 127.0.0.1:5000/alpine
+
+
 ### 1.指令
 - 列出镜像: docker image ls
 - 查找镜像: docker search mirror-name
@@ -47,13 +55,24 @@ $ sudo service docker restartn
     + 列出所有容器: docker ps -a
 - 列出docker的容器: docker container ls
 - 启动容器: docker start <name\>
+- 获取容器ip: docker inspect --format '{{.NetworkSettings.IPAddress}}' <name\>
 - 暂停容器: docker stop <name\>
+- 进入容器: docker exec -ti <name\> bash
+- 容器和主机文件copy: docker cp
 - 删除容器: docker rm <name\> (容器必须是停止状态)
+- 删除所有已停止的容器: docker rm $(docker ps -a -q)
 - 构建镜像: docker build -t hello .
   + -t tag options
   + -f 指定Dockerfile
   + . 镜像构建的上下文
-
+- 容器修改后提交: \
+```
+$	docker	commit	\
+				--author	"Tao	Wang	<twang2218@gmail.com>"	\
+				--message	"修改了默认网页"	\
+				webserver	\
+				nginx:v2
+```
 
 ### 2.compose
 ##### install
@@ -112,3 +131,20 @@ Traceback (most recent call last):
 ImportError: No module named web.server
 ```
 python的site-packages目录添加moses.pth: /root/moses/back
+
+alpine
+```
+env: can't execute 'bash': No such file or directory
+```
+Dockerfile 添加
+```
+RUN set -euxo pipefail && \
+    apk add --no-cache bash
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    apk update
+```
+
+
+## redis
+##### 基本命令
+- 服务的开启（关闭）: service redis-server start (stop)

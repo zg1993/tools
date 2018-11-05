@@ -1,4 +1,60 @@
 # 总览
+
+### MapReduce
+MapReduce作业(job)是客户端执行的单位: 它包括输入数据,MapReduce程序和配置信息.Hadoop通过把作业分成若干个小任务(task)来工作,包括两种任务类型:map任务和reduce任务
+两种类型的节点控制作业执行过程: jobtracker 和 多个tasktracker
+- jobtracker: 调度任务在tasktracker上运行
+- tasktracker: 运行任务的同时,把任务进度传送到jobtracker,jobtracker记录着每项任务的进展情况
+
+### HDFS
+特点:
+- 超大文件
+- 流式数据访问
+ +　一次写入，多次读取模式最高效
+- 商用硬件
+不适用：
+- 低延迟数据访问(hbase 适合)
+- 大量小文件
+- 多用户写入，任意修改文件
+非java应用访问hadoop系统使用Thrift
+其它HDFS的接口HTTP FTP
+#### 基本概念
+- 块 (读写的最小数据量, 单独的单元存储)default: 64M
+- 名称节点(namenode)和数据节点(datanode):HDFS集群的两种节点
+ + 一个名称节点(管理者)
+      管理文件系统的命名空间
+ + 多个数据节点(工作者)
+      文件系统的工作者
+
+
+
+### 伪分布式的安装  [参照](https://blog.csdn.net/hliq5399/article/details/78193113?utm_source=blogxgwz3)
+##### 1.hadoop
+- JAVA_HOME参数配置 hadoop-env.sh mapred-env.sh yarn-env.sh
+```bash
+export JAVA_HOME="/usr/jdk"
+```
+- core-site.xml
+  + fs.defaultFS: hdfs://localhost:9090
+  + hadoop.tmp.dir: /home/zhou/hadoop
+```html
+<property>
+<name></name>
+<value></value>
+</property>
+```
+- hdfs-site.xml
+ + dfs.replication: 1
+- 格式化HDFS: hdfs namenode -format(成功可以看到/home/zhou/hadoop/dfs)
+- 启动:
+ + NameNode: sbin.hadoop-daemon.sh start namenode
+ + DataNode: sbin/hadoop-daemon.sh start datanode
+ + SecondaryNameNode: sbin.hadoop-daemon.sh start secondarynamenode
+- jps 查看启动状态
+
+##### 2.hbase
+
+
 ### 1.hbase 系统架构
 - client
  + 通过RPC和HMaster（管理类操作）和HRegionServer(数据读写类操作)通信

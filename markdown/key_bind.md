@@ -61,7 +61,8 @@
  + alt+w(copy)/ctrl+w(cut)
  + ctrl+y (paste)
 - 重复上一个命令: ctrl-x z
-- 跳转到指定行
+- 跳转到指定行: M-g M-g
+- 替换: M-%
 # 3、Sublime
 ### 3.1 Key Binding
 - split screen: alt+Shift+2
@@ -71,6 +72,10 @@
 
 # 4、Git
 ### 4.1 Command
+```bash
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+```
 - ssh-keygen copy pub->setting ssh key
 - 添加一个远程库：git remote add origin git@github.com:name/project.git
 - 第一次push：git push -u origin master
@@ -84,3 +89,10 @@
   + 根据commit_id合并：git cherry-pick commid_id
   + conflict HEAD 本地的内容
 - 删除分支：git branch -d dev
+- 本地已存在分支关联远程分支： git pull origin master, git branch --upstream-to=...
+- 创建dev分支并且推送到远程：git push origin dev  (其他人使用 git fetch origin, git checkout -b dev origin/dev)
+
+
+### 4.2 概念
+- 工作区域：working directory, staging area ,git directory(repository)
+- 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）

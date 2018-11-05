@@ -57,3 +57,8 @@ public class C implements A,B {
 ### 线程安全
 - StringBuffer(synchronized 同步的) StringBuilder
 - Hashtable(synchronized) HashMap
+
+# intellij
+#### 引用外部Jar包
+  具体步骤：
+  File -> Project Structure (ctrl + shift + alt + s ) -> Module -> Dependencies -> Add… -> Library… -> Attach Classes.
