@@ -22,7 +22,7 @@ def delete_nth(array, n):
     for num in array:
         if count[num] < n:
             ans.append(num)
-            count[num] +    = 1
+            count[num] += 1
     return ans
 
 
