@@ -45,8 +45,11 @@
 ### 5.磁盘相关
 - du:　查看文件和文件夹大小
   * du -sh　可以指定路径默认当前路径: s:sum  h:human 查看当前文件的总大小
+  * --max-depth=1 指定遍历目录深度
+
 
 - df: 磁盘空间查看
+- 磁盘分区相关: https://blog.csdn.net/hejiamian/article/details/52031910
 
 ### 文件
 ##### 文件移动,拷贝
