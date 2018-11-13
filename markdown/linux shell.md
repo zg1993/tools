@@ -1,3 +1,12 @@
+## linux 一、系统管理
+#### 1.1 文件系统目录
+- http://laiguowei2004.blog.163.com/blog/static/368290002011126115625904/
+- https://blog.csdn.net/Alvern_Zhang/article/details/48392895
+
+
+
+
+
 ### 1.Command frequent
 - Find
     1. find . | xargs grep -ri "IBM"
