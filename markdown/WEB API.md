@@ -170,7 +170,7 @@ request url: http://topenapi.mgm-iot.com/v1/token
 
 
 #### 4、websocket推送，实时推送一台机床的状态
-js例子
+js示例代码
 ```js
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script>
@@ -359,4 +359,311 @@ class ContentError(object):
         FILE_IS_TOO_LARGE = "文件大于50M，不支持传输"
         FILE_NAME_TOO_LONG = "全英文文件名不得大于180个字符，全中文文件名不得大于60个字符"
         FILE_EDIT_ERROR = "文件类型不支持编辑"
+```
+
+##### 示例代码(测试服demo源码)
+
+###### api.js
+```js
+var test = new Vue({
+    el: '#example',
+    data: {
+        select: 'machine',
+        session_id: 'c2915ea819acac55f12a1519c75abff1',
+        cloud_path: '/',
+        file_size: 1400,
+        file_name: '1.txt',
+        storage_type: 0,
+        machine_id: 'ewCdAAEAAAAAACE=',
+        content: '',
+        file_md5: '',
+        conn: null,
+        transports: ["websocket"],
+        slist: [],
+        status: null,
+        alarm_str: '',
+        status_dict: {0: '停机', 1: '加工', 2: '下线', 3: 'deploy', 4: '报警', 5: '盒子断开'}
+    },
+
+    methods: {
+        log: function(msg) {
+            var control = $('#log')
+            control.html(control.html() + msg + '<br/>');
+            control.scrollTop(control.scrollTop() + 100);
+        },
+        // 文件传输
+        trans_file: function() {
+            /*
+            - session_id: access_token
+            - file_size: 文件大小
+            - cloud_path: 目的文件路径, 可以填 '/'
+            - file_name: 文件名
+            - storage_type: 文件传输类型 (0：本地到机床外部存储 1：本地到机床内部存储)
+            - machine_id: 机床id
+            */
+            url = 'http://topenapi.mgm-iot.com/v1/trans_file?session_id=' + this.session_id + '&cloud_path=' + this.cloud_path + '&file_size=' + this.file_size + '&file_name=' + this.file_name + '&storage_type=' + this.storage_type + '&machine_id=' + this.machine_id
+            // url = 'http://localhost:8200/trans_file?session_id=' + this.session_id + '&cloud_path=' + this.cloud_path + '&file_size=' + this.file_size + '&file_name=' + this.file_name + '&storage_type=' + this.storage_type + '&machine_id=' + this.machine_id
+            var conn = new SockJS(url, this.transports)
+            this.conn = conn
+            conn.onopen = function() {
+                console.log('trans_file on open')
+            }
+            var file_md5 = this.file_md5
+            var content = this.content
+            conn.onmessage = function(e) {
+                console.log(e.data)
+                var data = e.data
+                var file_id = data.file_id
+                var file_seek = data.file_seek
+                var code = data.code
+                var request_id = data.request_id
+                if (code != 200) {
+                    log('RECEIVE: ' + data.code + ' ' + data.message)
+                } else if (file_id){
+                    // 服务器返回file_id后使用下面msg格式进行传输文件,传输成功返回{code: 200, file_seek: 0, file_id: "ff973dd6ba4111e8852800163e026f57"}
+                    var msg = JSON.stringify({'content': content, 'file_md5': file_md5})
+                    console.log(msg)
+                    conn.send(msg)
+                } else if (request_id) {
+                    var control = $('#log')
+                    control.html(control.html() + 'Transport File success' + '<br/>');
+                    control.scrollTop(control.scrollTop() + 100);
+                }
+            }
+            conn.onclose = function() {
+                console.log('Colsed')
+                conn = null
+            }
+        },
+
+
+    },
+
+    computed: {
+        is_file: function() {
+            return this.select == 'transport_file'
+        }
+    },
+})
+```
+
+###### index.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="https://cdn.bootcss.com/jquery/1.4.2/jquery.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+  <link rel="stylesheet" type="text/css" href="./api.css">
+    <script>
+
+        $(function(){
+           var conn = null;
+           // 连接建立后发送该消息可以获取机床的实时状态, machine_id: get_organization接口里获取的machine_id, page: a(actual实时)
+           var msg = JSON.stringify({'machine_id': 'GADIAAAAAAAAAA8=', 'page': 'a'})
+           var second = 50000;
+           log = test.log
+           // 建立websocket连接
+           function connect() {
+            disconnect();
+            // test.session_id get_access_token接口获取的access_token
+            url = 'http://topenapi.mgm-iot.com/v1/real_time?session_id=' + test.session_id
+            // url = 'http://localhost:8200/real_time?session_id=' + test.session_id
+            conn = new SockJS(url, test.transports);
+            // 建立连接的回调函数
+            conn.onopen = function() {
+              log('Connect');
+              update_ui();
+            };
+
+            // 接受消息回调函数，处理机床实时消息
+            conn.onmessage = function(e) {
+              // log('Received: ' + e.data);
+              var data = e.data
+              if (data.code) {
+                log('Error: ' + data.message);
+              } else{
+              init_table(data)
+            }
+            };
+
+            // 连接关闭回调函数
+            conn.onclose = function() {
+              log('Disconnected.');
+              conn = null;
+              update_ui();
+            };
+           }
+           // 断开连接
+           function disconnect() {
+            if (conn != null) {
+              conn.close();
+              conn = null;
+              update_ui();
+            }
+           }
+
+           function update_ui() {
+            var msg = '';
+
+            if (conn == null || conn.readyState != SockJS.OPEN) {
+              $('#status').text('disconnected');
+              $('#connect').text('Connect');
+            } else {
+              $('#status').text('connected');
+              $('#connect').text('Disconnect');
+            }
+          }
+
+           $('#connect').click(function() {
+            if (conn == null) {
+              connect();
+            } else {
+              disconnect();
+            }
+           })
+
+           $('#send').click(function() {
+            console.log('send')
+            if (conn == null) {
+              log('not connected ...')
+            } else {
+              var machine_id = $('#machine_id').val()
+              if (!machine_id) {
+                machine_id = 'GADIAAAAAAAAAA8='
+              }
+              var msg = JSON.stringify({'machine_id': test.machine_id, 'page': 'a'})
+              conn.send(msg)
+              log('send: ' +  msg)
+            }
+           })
+
+           function init_table(data) {
+            var tbody = $('#table1')
+            tool_id = data['tool_id']
+            status = data['status']
+            if (data['status'] != undefined) {
+              test.status = status
+              if (status == 4) {
+                test.alarm_str = JSON.stringify({'alarm_code': data['alarm_code'],
+                            'alarm_info': data['alarm_info'], 'alarm_level': data['alarm_level'],
+                            'alarm_type': data['alarm_type']})
+              }
+            }
+            if (tool_id && test.slist.length == 0) {
+              for (var k in data) {
+                test.slist.push({'key': k, 'value': data[k]})
+              }
+
+            } else {
+              for (var k in data)
+                $('#'+k).text(data[k])
+            }
+           }
+
+           var fileSelect = $(':file')
+           $('.btn').click(function () {
+            console.log('select file')
+            if (fileSelect) {
+              fileSelect.click()
+            }
+           })
+        })
+      console.log(FileReader)
+
+      // 文件传输
+     function handleFiles(files) {
+            var file = files[0]
+            console.log(files[0].name)
+            test.file_name = files[0].name
+            test.file_size = files[0].size
+            var reader = new FileReader()
+            // reader.readAsText(file)
+            reader.readAsDataURL(file)
+            reader.onload = function(f) {
+              console.log('onload start ...')
+              console.log(f.target.result)
+              var content = f.target.result
+              test.content = f.target.result.split(',')[1]
+              test.file_md5 = md5(test.content) // 发送base64编码后的内容
+              console.log('onload.....')
+              test.trans_file()
+            }
+           }
+
+    </script>
+    <title>Machine Status</title>
+</head>
+<body>
+<div id='example'>
+
+<h3> {{ select }} </h3>
+<div id="main" class="a">
+<div class="select_type">
+  <input type="radio" id="transport_file" value="transport_file" v-model="select">
+  <label for="transport_file">transport_file</label>
+  <br>
+  <input type="radio" id="machine" value="machine" v-model="select">
+  <label for="machine">machine</label>
+  <br>
+</div>
+<div id="storage_type" v-show="is_file">
+  <input type="radio" id="local_box" value="0" v-model="storage_type">
+  <label for="local_box">本地到机床外部存储</label>
+  <br>
+  <input type="radio" id="local_cnc" value="1" v-model="storage_type">
+  <label for="local_cnc">本地到机床内部存储</label>
+  <br>
+  <br>
+ </div>
+ </div>
+<fieldset>
+  <label for="session_id">session_id: </label>
+  <input v-model="session_id" id="session_id" placeholder="session_id" type="text" style="width: 350px" /> <br>
+  <label for="machine_id">machine_id: </label>
+  <input v-model="machine_id" id="machine_id" placeholder="machine_id" type="text" style="width: 350px" /> <br>
+  <label for="cloud_path" v-if="is_file">path: </label>
+  <input v-model="cloud_path" v-if="is_file" id="cloud_path" placeholder="path" type="text" style="width: 350px" /> <br>
+</fieldset>
+<input type="file" name="" style="display:none" onchange="handleFiles(this.files)">
+<a class="btn" href="#" v-show="is_file">Select File</a>
+<!-- <a v-if="select=='Transport File'" class="btn" href="#">Select File</a> -->
+<br>
+<div v-show="!is_file">
+<a id="connect" href="#">Connect</a> | Status: <span id="status">disconnected</span>
+
+<p v-if="machine_id">send_msg: {'machine_id': '{{machine_id}}', 'page': 'a'} <a id="send" href="#">Send</a> </p>
+</div>
+
+
+<div id="log" style="width: 60em; height: 20em; overflow:auto; border: 1px solid black"></div>
+
+<div>
+  <p v-show="!is_file">Status: {{status_dict[status]}} </p> <p v-if="status=='4'"> {{alarm_str}} </p>
+
+</div>
+
+<table border="1">
+  <tr v-cloak v-for="(item, index) of slist">
+    <td> {{index}} </td>
+    <td> {{item.key}} </td>
+    <td v-bind:id="item.key"> {{item.value}} </td>
+  </tr>
+</table>
+
+
+<table id="table1" border="1">
+
+</table>
+
+</div>
+<script src="./api.js"></script>
+
+</body>
+</html>
 ```
