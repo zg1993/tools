@@ -1,0 +1,4 @@
+base 底数
+exponent 指数
+cube 立方根
+square root 平方根

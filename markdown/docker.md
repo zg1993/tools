@@ -40,6 +40,17 @@ $ sudo service docker restartn
 - 标记镜像: docker tag alpine:latest 127.0.0.1:5000/alpine:latest
 - 推送镜像: docker push 127.0.0.1:5000/alpine
 
+##### 11-13
+- 查看镜像仓库的内容: curl -X GET localhost:5000/v2/_catalog -k
+- 镜像推送:
+ + docker tag redis:latest localhost:5000/redis:latest
+ + docker push localhost:5000/redis
+- 镜像下载: docker pull localhost:5000/redis
+- 登录：docker login -u=abc https://localhost:5000
+- 其它主机登录:/etc/docker/daemon.json:
+{"insecure-registries":["192.168.1.186:5000"]}
+
+
 
 ### 1.指令
 - 列出镜像: docker image ls
