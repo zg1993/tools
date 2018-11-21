@@ -21,3 +21,21 @@
 - 逻辑流: PC值的序列
 - 并发流: 一个逻辑流的执行在时间上与另一个流重叠(A and B, A and C)
 - 并行流: 并发流的一个真子集,如果俩个流并发运行在不同的处理器或者计算机上,称为**并行流**
+
+### scheme
+#### 基本语法
+- [教程](https://www.ibm.com/developerworks/cn/linux/l-schm/index1.html)
+- 过程定义的一般形式: (define (<name> <formal parameters>) <body>)
+- 条件表达式: (cond (<p1> <e1>)
+                   (<p2> <e2>))
+- if表达式: (if <predicate> <consequent> <alternative>)
+- 基本谓词: > < =
+- 逻辑复合谓词：　and or not
+#### mit-scheme
+- 进入控制台(eidt 'console)
+- alias edwin=$'mit-scheme -eval "(edit \'console)"'
+#### 1.构造过程抽象
+##### 1.1 程序设计的基本元素
+- 基本表达形式: 语言最简单的个体
+- 组合的方法: 构造复合的元素
+- 抽象的方法: 为复合对象命名, 并将其当做单元去操作
