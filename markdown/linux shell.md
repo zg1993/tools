@@ -2,6 +2,9 @@
 #### 1.1 文件系统目录
 - http://laiguowei2004.blog.163.com/blog/static/368290002011126115625904/
 - https://blog.csdn.net/Alvern_Zhang/article/details/48392895
+#### 1.2 系统相关命令（systemd）
+http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
+- hostnamectl: 当前主机的信息
 
 
 
