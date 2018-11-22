@@ -26,8 +26,7 @@
 #### 基本语法
 - [教程](https://www.ibm.com/developerworks/cn/linux/l-schm/index1.html)
 - 过程定义的一般形式: (define (<name> <formal parameters>) <body>)
-- 条件表达式: (cond (<p1> <e1>)
-                   (<p2> <e2>))
+- 条件表达式: (cond (<p1> <e1>)(<p2> <e2>))
 - if表达式: (if <predicate> <consequent> <alternative>)
 - 基本谓词: > < =
 - 逻辑复合谓词：　and or not
