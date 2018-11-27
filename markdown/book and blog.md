@@ -30,6 +30,13 @@
 - if表达式: (if <predicate> <consequent> <alternative>)
 - 基本谓词: > < =
 - 逻辑复合谓词：　and or not
+- let表达式:
+       (let ((<var><exp>)
+             (<var1><exp1>))
+             <body>)
+- 代换模型:
+ + 应用序求值:　先求值参数而后应用
+ + 正则序求值:　完全展开而后归约
 #### mit-scheme
 - 进入控制台(eidt 'console)
 - alias edwin=$'mit-scheme -eval "(edit \'console)"'
@@ -38,3 +45,4 @@
 - 基本表达形式: 语言最简单的个体
 - 组合的方法: 构造复合的元素
 - 抽象的方法: 为复合对象命名, 并将其当做单元去操作
+- 概率算法: 费马检查

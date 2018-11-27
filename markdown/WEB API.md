@@ -189,7 +189,10 @@ js示例代码
 ##### 4.1获取机床的实时状态：
 url：http://topenapi.mgm-iot.com/v1/real_time?session_id=access_toke
 ```js
-var msg = JSON.stringify({'machine_id': 'GADIAAAAAAAAAA8=', 'page': 'a'})
+var msg = JSON.stringify({'machine_id': 'GADIAAAAAAAAAA8=',
+                          'page': 'a'
+                        _ })
+                        // custom 字段自定义接受的内容,非合法字段无效(如: xxxx)
 sock.send(msg)
 ```
 
@@ -199,23 +202,25 @@ sock.send(msg)
 {status: 5, status_time: "2018-09-17T01:52:52.894000Z", machine_id: "GADIAAAAAgABAAA="}
 // 主轴转速、倍率、负载，进给、进给倍率，各轴单位、坐标和负载数据等信息
 {
-"Fovr": "300.000"
-"S1load": "0.000"
-"S1speed": "0.000"
-"S1speedOvr": "100.000"
-"Xact": "259.212"
-"Xload": "1.000"
-"Yact": "352.546"
-"Yload": "0.000"
-"Zact": "-6273.725"
-"Zload": "0.000"
-"block": "T1 "
-"id": "GADIAAAAAgABAAA="
-"line": "0"
-"path_feedrate": "150.000"
-"program": "1004.1004"
+"Fovr": "300.000"  // 进给速度
+"S1load": "0.000"  // 主轴S1负载
+"S1speed": "0.000"  // 主轴S1转速
+"S1speedOvr": "100.000"  // 主轴S1转速倍率
+"Xact": "259.212"  // 伺服轴X机械坐标
+"Xload": "1.000"   // 伺服轴X负载
+"Yact": "352.546"  // 伺服轴Y机械坐标
+"Yload": "0.000"  // 伺服轴Y负载
+"Zact": "-6273.725"  // 伺服轴Z机械坐标
+"Zload": "0.000"  // 伺服轴Z负载
+"block": "T1 "  // 当前程序内容
+"id": "GADIAAAAAgABAAA="  // 机床id
+"line": "0"  // 当前程序行  // 当前程序行号
+"path_feedrate": "150.000"  // 进给倍率
+"program": "1004.1004"  // 程序名(主程序.子程序)
 "time": "2018-09-17T06:30:30.156Z"
-"tool_id": "1"}
+"tool_id": "1"   // 刀具号
+"part_count": 1  // 生产一个零件
+}
 // 主轴转速、倍率、负载，进给、进给倍率，各轴单位、坐标和负载数据的实时变化
 {"Xact": "260.306", "id": "GADIAAAAAgABAAA=", "Yact": "353.640"}
 ```
