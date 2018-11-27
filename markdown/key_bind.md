@@ -91,6 +91,7 @@ $ git config --global user.email johndoe@example.com
 - 删除分支：git branch -d dev
 - 本地已存在分支关联远程分支： git pull origin master, git branch --upstream-to=...
 - 创建dev分支并且推送到远程：git push origin dev  (其他人使用 git fetch origin, git checkout -b dev origin/dev)
+- 从本地仓库里移除: git rm -r --cached lisp/derby.log 
 
 
 ### 4.2 概念
