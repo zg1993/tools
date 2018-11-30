@@ -20,3 +20,9 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 - 字符串转化为时间戳
 
       time.mktime(time.strptime('18-10-23 16-12-32', '%y-%m-%d %H-%M-%S'))
+
+## site-packages dist-packages
+- site-packages: 通过python setup.py install(通过源码安装)
+- dist-packages:
+ + /usr/lib/python2.7/dist-packages: sudo
+ + /usr/local/lib/python2.7/dist-packages:
