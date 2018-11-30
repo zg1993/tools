@@ -6,6 +6,12 @@
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 - hostnamectl: 当前主机的信息
 
+#### 1.3 系统内存管理
+- 缓存释放
+ + 0 – 不释放
+ + 1 – 释放页缓存
+ + 2 – 释放dentries和inodes
+ + 3 – 释放所有缓存
 
 
 

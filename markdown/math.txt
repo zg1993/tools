@@ -7,3 +7,4 @@ ordinal 依次的， 有序
 aggregate 合计
 assembly 组装
 halve 减半
+phase out 淘汰
