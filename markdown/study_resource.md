@@ -1,6 +1,6 @@
 - python
  * [python study tutorials ](https://medium.mybridge.co/python-top-45-tutorials-for-the-past-year-v-2018-1b4d46c9e857)
- *
+ * [python dive into python](https://woodpecker.org.cn/diveintopython/)
 
 
 
