@@ -20,3 +20,13 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 - 字符串转化为时间戳
 
       time.mktime(time.strptime('18-10-23 16-12-32', '%y-%m-%d %H-%M-%S'))
+
+
+## anacoda and pyenv
+### anacoda
+- 查找包并安装
+ + anaconda search -t conda package-name
+ +
+
+## 4. standard library
+### 4.1 uuid
