@@ -33,8 +33,18 @@ $ sudo service docker restart
 $ sudo systemctl deamon-reload
 $ sudo service docker restartn
 ```
-#### 私人仓库搭建
-
+#### 私人仓库搭
+- 远程访问修改/etc/default/docker
+- 镜像查看: curl -X GET https://admin:admin@tdocker.mgm-iot.com/v2/_catalog -k
+- 密码:htpasswd -b -m -c /etc/nginx/conf.d/htpasswd admin admin
+- 下载镜像: docker pull tdocker.mgm-iot.com/admin/hello-world:latest
+- 上传镜像:
+```bash
+$	docker	tag	ubuntu:17.10	docker.domain.com/username/ubuntu:17.10
+$	docker	push	docker.domain.com/username/ubuntu:17.10
+```
+- ![doc](https://docs.docker.com/registry/recipes/nginx/#starting-and-stopping)
+- ![blog](https://blog.csdn.net/gqtcgq/article/details/51163558)
 - 启动:docker run -d -p 5000:5000 -v /home/zhou/registry/:/var/lib/registry --name registry registry
 - 查看仓库镜像: curl 127.0.0.1:5000/v2/_catalog
 - 标记镜像: docker tag alpine:latest 127.0.0.1:5000/alpine:latest
