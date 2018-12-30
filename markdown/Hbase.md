@@ -26,6 +26,16 @@ MapReduce作业(job)是客户端执行的单位: 它包括输入数据,MapReduce
  + 多个数据节点(工作者)
       文件系统的工作者
 
+### Spark
+1. RDD (resilient distrubuted datasets)
+- 特点： resilient 数据储存的弹性，可内存可磁盘
+- RDD计算
+ + transformation(不会引发计算，逻辑操作):flatMap, map, union, reduceByKey
+ + action(实际计算):count, collect, saveAsTextFile
+- RDD宽窄依赖：
+ +　宽依赖: shuffle
+ +　窄依赖：没有shuffle
+
 
 
 ### 伪分布式的安装  [参照](https://blog.csdn.net/hliq5399/article/details/78193113?utm_source=blogxgwz3)
