@@ -23,6 +23,8 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 
 ### 1.Command frequent
+- tr cut
+ + env_var=$(echo "kafka_env_dir=10" | cut -d_ -f1- | tr '[:lower:]' '[:upper:]'| tr _ .)
 - Find
     1. find . | xargs grep -ri "IBM"
     2. find . | xargs grep -ri "IBM"
@@ -66,13 +68,14 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 #### 3.2 ip 域名 端口 网络相关
  - 域名对应ip：nslookup ip
+ - IP: /sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 | awk '{print $2}' | tr -d "addr:"
 
  ##### nmap
  ##### netstat
  ##### iptables
  ##### nslookup
  ##### nc
- 
+
 ### 4.expand
 - /sbin/: 基本的系统命令 （只有管理员能运行）
 - /bin/：普通的基本命令
