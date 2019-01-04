@@ -1,7 +1,7 @@
 ## linux 一、系统管理
 #### 1.1 文件系统目录
-- http://laiguowei2004.blog.163.com/blog/static/368290002011126115625904/
-- https://blog.csdn.net/Alvern_Zhang/article/details/48392895
+- [b](http://laiguowei2004.blog.163.com/blog/static/368290002011126115625904/)
+- [b](https://blog.csdn.net/Alvern_Zhang/article/details/48392895)
 #### 1.2 系统相关命令（systemd）
 http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 - hostnamectl: 当前主机的信息
@@ -82,13 +82,14 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 
 ### 5.磁盘相关
+- lsblk -f: 显示分区基本信息
 - du:　查看文件和文件夹大小
   * du -sh　可以指定路径默认当前路径: s:sum  h:human 查看当前文件的总大小
   * --max-depth=1 指定遍历目录深度: du --max-depth=1 -h
 
 
 - df: 磁盘空间查看
-- 磁盘分区相关: https://blog.csdn.net/hejiamian/article/details/52031910
+- 磁盘分区相关: [blog](https://blog.csdn.net/hejiamian/article/details/52031910)
 
 ### 文件
 ##### 文件移动,拷贝
