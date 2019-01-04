@@ -5,10 +5,15 @@
 ### 2.镜像制作
 
 ```bash
+# moses:pro
 cd ~/moses/docker
 docker build -f Dockerfile -t moses:pro /home/server/moses/
 docker tag
 docker push
+
+# kafka
+cd ~/software
+docker build -t "kafka:`date +%Y%m%d`" -f ~/moses/docker/kafka_Dockerfile .
 ```
 
 ### 3.镜像下载
@@ -29,7 +34,7 @@ docker push
   - 运行
       ```bash
       cd $path # docker-compose.yml 所在的目录下
-      docker-compose up
+      docker-compose up -d
       ```
   - 进入servers 执行建表操作和创建后台超级用户
       ```bash
@@ -38,6 +43,13 @@ docker push
       python back/bms/create_admin.py --env=docker
       ```
 
+  - 镜像更新后重启
+  ```
+  docker-compose stop servers
+  docker-compose rm servers
+  docker-compose create servers
+  docker-compose start servers
+  ```
 docker-compose.yml文件
 
 ```yml
