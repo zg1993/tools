@@ -71,6 +71,16 @@
 - 回到上一个页面: alt+-
 
 # 4、Git
+### /etc/hosts
+```
+#github
+151.101.185.194  github.global.ssl.fastly.net
+192.30.253.112   github.com
+```
+修改生效
+```bash
+ /etc/init.d/networking restart
+```
 ### 4.1 Command
 ```bash
 $ git config --global user.name "John Doe"
@@ -91,6 +101,7 @@ $ git config --global user.email johndoe@example.com
 - 删除分支：git branch -d dev
 - 本地已存在分支关联远程分支： git pull origin master, git branch --upstream-to=...
 - 创建dev分支并且推送到远程：git push origin dev  (其他人使用 git fetch origin, git checkout -b dev origin/dev)
+- 从本地仓库里移除: git rm -r --cached lisp/derby.log
 
 
 ### 4.2 概念

@@ -30,3 +30,9 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 
 ## 4. standard library
 ### 4.1 uuid
+
+## site-packages dist-packages
+- site-packages: 通过python setup.py install(通过源码安装)
+- dist-packages:
+ + /usr/lib/python2.7/dist-packages: sudo
+ + /usr/local/lib/python2.7/dist-packages:
