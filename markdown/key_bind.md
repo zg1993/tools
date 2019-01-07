@@ -118,4 +118,5 @@ $ git config --global user.email johndoe@example.com
  + 追加提交：git add file_name; git commit --amend
  + 提交重置：　git reset --hard HEAD~3
  + 回退到某个版本：git reset --hard commit-id
+ + 回退到上版本：git reset --hard HEAD^
  =   ===
