@@ -5,16 +5,11 @@
 ### 2.镜像制作
 
 ```bash
-<<<<<<< HEAD
-=======
 # moses:pro
->>>>>>> e108c50e569f58dd9a84694ad42dc96d20578066
 cd ~/moses/docker
 docker build -f Dockerfile -t moses:pro /home/server/moses/
 docker tag
 docker push
-<<<<<<< HEAD
-=======
 
 # kafka
 cd ~/software
@@ -40,11 +35,7 @@ docker build -t "kafka:`date +%Y%m%d`" -f ~/moses/docker/kafka_Dockerfile .
   - 运行
       ```bash
       cd $path # docker-compose.yml 所在的目录下
-<<<<<<< HEAD
-      docker-compose up
-=======
       docker-compose up -d
->>>>>>> e108c50e569f58dd9a84694ad42dc96d20578066
       ```
   - 进入servers 执行建表操作和创建后台超级用户
       ```bash
@@ -53,8 +44,6 @@ docker build -t "kafka:`date +%Y%m%d`" -f ~/moses/docker/kafka_Dockerfile .
       python back/bms/create_admin.py --env=docker
       ```
 
-<<<<<<< HEAD
-=======
   - 镜像更新后重启
   ```
   docker-compose stop servers
@@ -62,7 +51,6 @@ docker build -t "kafka:`date +%Y%m%d`" -f ~/moses/docker/kafka_Dockerfile .
   docker-compose create servers
   docker-compose start servers
   ```
->>>>>>> e108c50e569f58dd9a84694ad42dc96d20578066
 docker-compose.yml文件
 
 ```yml
