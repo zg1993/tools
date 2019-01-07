@@ -68,10 +68,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 #### 3.2 ip 域名 端口 网络相关
  - 域名对应ip：nslookup ip
-<<<<<<< HEAD
-=======
  - IP: /sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6 | awk '{print $2}' | tr -d "addr:"
->>>>>>> e108c50e569f58dd9a84694ad42dc96d20578066
 
  ##### nmap
  ##### netstat
@@ -93,6 +90,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 - df: 磁盘空间查看
 - 磁盘分区相关: [blog](https://blog.csdn.net/hejiamian/article/details/52031910)
+- 111
 
 ### 文件
 ##### 文件移动,拷贝
