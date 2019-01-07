@@ -76,7 +76,9 @@ $	docker	push	docker.domain.com/username/ubuntu:17.10
     + 列出所有容器: docker ps -a
 - 列出docker的容器: docker container ls
 - 启动容器: docker start <name\>
-- 获取容器ip: docker inspect --format '{{.NetworkSettings.IPAddress}}' <name\>
+- 获取容器ip:
+  + docker inspect --format '{{.NetworkSettings.IPAddress}}' <name\>
+  + cat /etc/hosts
 - 暂停容器: docker stop <name\>
 - 进入容器: docker exec -ti <name\> bash
 - 容器和主机文件copy: docker cp
@@ -94,6 +96,7 @@ $	docker	commit	\
 				webserver	\
 				nginx:v2
 ```
+- log 查看： docker logs -f container
 
 ### 2.compose
 ##### install
@@ -169,3 +172,13 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
 ## redis
 ##### 基本命令
 - 服务的开启（关闭）: service redis-server start (stop)
+
+
+
+### FQA
++ "Can't resolve address" when Kafka in Docker
+      Issue
+      使用Docker运行Kafka，在produce message时发生Can't resolve address: 7fd4f3dcac6c:9092，其中 7fd4f3dcac6c 为contianer的hostname
+
+      Solution
+      vi config/server.properties and SET advertised.host.name=<Your Docker IP,like 192.168.0.100>
