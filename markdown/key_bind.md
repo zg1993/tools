@@ -111,3 +111,10 @@ $ git config --global user.email johndoe@example.com
 ### 4.3 远程分支的管理
  - 查看：git remote show origin
  - 删除远程分支：git push origin :delete_branch
+
+### 4.4 撤销操作
+- add后：git reset HEAD file_name
+- commit后:
+ + 追加提交：git add file_name; git commit --amend
+ + 提交重置：　git reset --hard HEAD~3
+ + 回退到某个版本：git reset --hard commit-id
