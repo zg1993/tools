@@ -107,3 +107,7 @@ $ git config --global user.email johndoe@example.com
 ### 4.2 概念
 - 工作区域：working directory, staging area ,git directory(repository)
 - 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）
+
+### 4.3 远程分支的管理
+ - 查看：git remote show origin
+ - 删除远程分支：git push origin :delete_branch
