@@ -109,7 +109,11 @@ $ git config --global user.email johndoe@example.com
 - 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）
 
 ### 4.3 远程分支的管理
+<<<<<<< HEAD
  - 查看：git remote show origin(本地分支的查看：git branch -vv)
+=======
+ - 查看：git remote show origin
+>>>>>>> e548284fc1335b19d651159ebcbbabbfc80f46e6
  - 删除远程分支：git push origin :delete_branch
 
 ### 4.4 撤销操作

@@ -7,6 +7,7 @@ export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 ```
 
+
 ### 1.linux相关软件
 - [rar](https://blog.csdn.net/scorpio3k/article/details/49006603)
 
