@@ -48,6 +48,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
     一般来说，UNIX(linux) 系统的进程以执行系统调用exit()来结束的。这个回传值就是status值。回传给父进程，用来检查子进程的执行状态。
    一般指令程序倘若执行成功，其回传值为 0；失败为 1。
   +  $$ 当前shell的PID
+  + [grep 转义](https://blog.csdn.net/weixin_36732479/article/details/76890337)
 
 ### 2.进程相关
 - jobs: 查看后台运行进程
