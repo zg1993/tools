@@ -107,18 +107,3 @@ $ git config --global user.email johndoe@example.com
 ### 4.2 概念
 - 工作区域：working directory, staging area ,git directory(repository)
 - 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）
-
-### 4.3 远程分支的管理
- - 查看：git remote show origin
- - 删除远程分支：git push origin :delete_branch
-
-### 4.4 撤销操作
-- add后：git reset HEAD file_name
-- commit后:
- + 追加提交：git add file_name; git commit --amend
- + 提交重置：　git reset --hard HEAD~3
- + 回退到某个版本：git reset --hard commit-id
- + 回退到上版本：git reset --hard HEAD^
-   + git reset –mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码，回退commit和index信息
-   + git reset –soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可
-   + git reset –hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容
