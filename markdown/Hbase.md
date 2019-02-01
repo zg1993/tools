@@ -141,6 +141,7 @@ export JAVA_HOME="/usr/jdk"
 
 ##### HBASE 4811
 [reverse scan](https://issues.apache.org/jira/browse/HBASE-4811)
+[python xml filter](https://stackoverflow.com/questions/9302097/hbase-rest-filter-singlecolumnvaluefilter/11414064#11414064)
 
 ### Tool
 ##### YCSB性能测试工具

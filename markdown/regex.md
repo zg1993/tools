@@ -42,6 +42,7 @@
 In [529]: re.search(r'\d', 'afad1fa').group()
 Out[529]: '1'
 In [531]: re.match(r'\d', 'ab11') is None
+Out[531]: True
 # 定位符
 In [502]: re.match(r'.*\b', 'abc abc').group()
 Out[502]: 'abc abc'
