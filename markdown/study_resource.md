@@ -13,6 +13,10 @@
 - GUI: graphical user interface
 - RPC: remote procedure call
 - REST: repersentational state transfer
+- ERP: enterprise resource planning 企业资源计划
+- MRP: manufacture resource plan 制造资源计划
+- LRU: last recently used 最近最少使用
+- TTL: time to live 存活时间，生存周期
 - 30-09-2018
  * hbase 过滤器 (正则匹配)
  * python unittest

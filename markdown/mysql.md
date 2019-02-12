@@ -17,3 +17,9 @@
  + distinct(default 删除重复元素), all(返回所有结果)
 - order by(排序)：select * from table order by field [ASC(默认升序) [DESC]];
 - group by(分组)
+- join(多表查询)
+
+### sql
+- schema: 模式  类型定义
+- relation: 关系（表） 变量声明
+- instance: 实例  变量赋值

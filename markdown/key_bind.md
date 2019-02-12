@@ -123,4 +123,3 @@ $ git config --global user.email johndoe@example.com
    + git reset –mixed：此为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码，回退commit和index信息
    + git reset –soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可
    + git reset –hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容
->>>>>>> 6457d9fa1c051ab7c76c87970026a6d4e78090f9
