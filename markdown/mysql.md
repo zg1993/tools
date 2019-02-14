@@ -23,3 +23,8 @@
 - schema: 模式  类型定义
 - relation: 关系（表） 变量声明
 - instance: 实例  变量赋值
+
+
+### python
+#### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
+#### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）

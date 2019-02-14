@@ -63,6 +63,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 - 查看软件安装位置： which virtualbox， locate VBox
 - 通过端口号查找进程： lsof -i:port
  + fd: 111u (u表示文件被打开并处于读取/写入模式 大写的w应用程序对整个文件的写锁)
+- 查看进程占用的端口号：cat /etc/services
 - scp文件拷贝
  + 远程到本地： scp root@tmqtt:/root/soft/hadoop-2.8.0.tar.gz
  + /home/zhou/software/
