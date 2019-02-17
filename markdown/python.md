@@ -6,6 +6,42 @@ In [839]: u"^[\u4e00-\u9fff\w]{{{0},{1}}}$".format(1,3)
 Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 ```
 
+#### 字节和数值之间转换
+```python
+In [50]: '559cae50'.decode('hex')
+Out[50]: 'U\x9c\xaeP'
+
+In [51]: 'U\x9c\xaeP'.encode('hex')
+Out[51]: '559cae50'
+
+In [52]: int('559cae50', base=16)
+Out[52]: 1436331600
+
+In [53]: hex(1436331600)
+Out[53]: '0x559cae50'
+
+#  利用binascii 模块
+In [92]: binascii.unhexlify(hex(1436331600)[2:])
+Out[92]: 'U\x9c\xaeP'
+
+In [93]: binascii.hexlify('U\x9c\xaeP')
+Out[93]: '559cae50'
+
+In [94]: int(binascii.hexlify('U\x9c\xaeP'), base=16)
+Out[94]: 1436331600
+
+
+>>> import codecs
+>>> hexlify = codecs.getencoder('hex')
+>>> hexlify(b'Blaah')[0]
+b'426c616168'
+Using binascii is easier and nicer:
+
+>>> import binascii
+>>> binascii.hexlify(b'Blaah')
+b'426c616168'
+```
+[hex <-> bytes](https://stackoverflow.com/questions/13435922/python-encode)
 
 ## 2. Test
 #### 2.1 unittest
