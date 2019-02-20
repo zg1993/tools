@@ -102,6 +102,7 @@ $ git config --global user.email johndoe@example.com
 - 本地已存在分支关联远程分支： git pull origin master, git branch --upstream-to=...
 - 创建dev分支并且推送到远程：git push origin dev  (其他人使用 git fetch origin, git checkout -b dev origin/dev)
 - 从本地仓库里移除: git rm -r --cached lisp/derby.log
+- git reflog 查看分支的所以操作记录（包括已经被删除的提交记录）
 
 
 ### 4.2 概念
@@ -115,7 +116,7 @@ $ git config --global user.email johndoe@example.com
 
 ### 4.4 撤销操作
 - add后：git reset HEAD file_name
-- commit后:
+- commit后（回到上一步，git reset --soft HEAD^）:
  + 追加提交：git add file_name; git commit --amend
  + 提交重置：　git reset --hard HEAD~3
  + 回退到某个版本：git reset --hard commit-id

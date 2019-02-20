@@ -1,6 +1,7 @@
 ### shell操作
 - 启动：mysql -u root -p
 - ; translate \G 按列显示
+- systemctl status mysql.service 检查mysql的服务状态
 - 数据库：关联表的集合
 - mysql -u root -p (password: 123)
 - show engines 系统支持存储引擎查看
@@ -38,3 +39,6 @@
 ### python
 ##### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
 ##### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）
+#### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
+#### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）
+#### pymysql (python3 连接mysql 取代mysqldb)
