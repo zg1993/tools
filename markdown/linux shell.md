@@ -59,6 +59,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
   + cat /proc/net/arp 查看arp缓存表
   + nmap -sP 192.168.1.0/24 进行ping扫描
     + 其它主机端口开放情况：nmap ip(nmap -sS ip)
+    + 本机端口开放查看：netstat -an | grep 3306
 - 访问共享文件：smb://ip
 - 查看软件安装位置： which virtualbox， locate VBox
 - 通过端口号查找进程： lsof -i:port
@@ -67,6 +68,7 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 - scp文件拷贝
  + 远程到本地： scp root@tmqtt:/root/soft/hadoop-2.8.0.tar.gz
  + /home/zhou/software/
+ + apt-cache search softerware 查找apt-get包
 
 #### 3.2 ip 域名 端口 网络相关
  - 域名对应ip：nslookup ip

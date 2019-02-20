@@ -52,6 +52,7 @@ $	docker	push	docker.domain.com/username/ubuntu:17.10
 
 ##### 11-13
 - 查看镜像仓库的内容: curl -X GET localhost:5000/v2/_catalog -k
+- 获取某个镜像的标签列表：curl -X GET https://admin:admin@tdocker.mgm-iot.com/v2/moses/tags/list -k
 - 镜像推送:
  + docker tag redis:latest localhost:5000/redis:latest
  + docker push localhost:5000/redis

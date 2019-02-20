@@ -24,3 +24,13 @@ export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
   2. -->终端输入git clone [代码托管地址]
   3. cd markdown-table-editor
   4. apm install
+
+### common lisp
+- sudo apt-get install emacs sbcl lisp slime
+- .emacs.d/init.el
+```lisp
+(setq inferior-list-program "/usr/bin/sbcl")
+(add-to-list 'load-path "/usr/share/emacs24/site-lisp/slime/")
+(require 'slime)
+```
+- 进入 M-X slime

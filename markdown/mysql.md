@@ -1,6 +1,11 @@
 ### shell操作
+- 启动：mysql -u root -p
+- ; translate \G 按列显示
 - 数据库：关联表的集合
 - mysql -u root -p (password: 123)
+- show engines 系统支持存储引擎查看
+ + 查看表信息：show table status from db_name where name='t2';
+ + 查看建表语句：show create table t3;
 - show databases;
 - use mysql;
 - show tables;
@@ -19,6 +24,11 @@
 - group by(分组)
 - join(多表查询)
 
+### 常用语句
+- select count(*) 和order by是最频繁的
+### msyql的连接操作
+- 开放3306端口供局域网内其它机器查看：[csdn](https://blog.csdn.net/freezingxu/article/details/77088506)
+
 ### sql
 - schema: 模式  类型定义
 - relation: 关系（表） 变量声明
@@ -26,5 +36,5 @@
 
 
 ### python
-#### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
-#### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）
+##### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
+##### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）

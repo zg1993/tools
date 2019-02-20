@@ -51,6 +51,7 @@
 ### math
 #### 取余(rem)和取模(mod)
 - 取余商值向零舍入
+- python 里的%是取模 math.fmod是取余 math.modf(1.1) 返回小数和整数部分
 ```
 5 mod 3 = 2
 5 rem 3 = 2
