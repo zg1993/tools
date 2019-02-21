@@ -14,7 +14,6 @@ docker push
 # kafka
 cd ~/software
 docker build -t "kafka:`date +%Y%m%d`" -f ~/moses/docker/kafka_Dockerfile .
->>>>>>> e108c50e569f58dd9a84694ad42dc96d20578066
 ```
 
 ### 3.镜像下载
