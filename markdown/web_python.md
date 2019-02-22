@@ -12,3 +12,17 @@
 * Proxy support for HTTP and SOCKS.
 * 100% test coverage.
 ##### requests
+
+
+
+### 2.django
+##### occurence questions:
+- 使用pymysql(project/__init__.py):
+      import pymysql
+      pymysql.install_as_MySQLdb()
+- 初始化数据库：python manage.py migrate
+
+##### read source code
+- metaclass
+- functools.total_ordering (比较函数)
+- property

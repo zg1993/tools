@@ -39,6 +39,4 @@
 ### python
 ##### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
 ##### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）
-#### MySQLdb(C模块，使用mysql客户端中的mysql协议实现相连接，更快，需要c库才能工作)
-#### mysql-connector（python模块，在python中重新实现mysql协议，比较慢，不需要c库，安装方便）
 #### pymysql (python3 连接mysql 取代mysqldb)

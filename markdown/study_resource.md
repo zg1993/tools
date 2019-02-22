@@ -11,6 +11,7 @@
 
 ## abbreviation
 - GUI: graphical user interface
+- DRY: don't repeat yourself
 - RPC: remote procedure call
 - REST: repersentational state transfer
 - ERP: enterprise resource planning 企业资源计划
