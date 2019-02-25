@@ -21,8 +21,14 @@
       import pymysql
       pymysql.install_as_MySQLdb()
 - 初始化数据库：python manage.py migrate
+##### migrate
+- python manage.py makemigrations: model层转为迁移文件migration
+- python manage.py showmigrations: 查看迁移文件的执行状态
+- python manage.py migrate: 通过迁移文件更新数据库
+
 
 ##### read source code
 - metaclass
 - functools.total_ordering (比较函数)
 - property
+  - inspect: isclass

@@ -54,7 +54,7 @@ Out[504]: 'abc abc '
 ['a', 'b', 'c', 'd']
 In [612]: re.split('[\s,]', 'dsfaf ,afads, fasa ')
 Out[612]: ['dsfaf', '', 'afads', '', 'fasa', '']
-# 切分加上分组的话，返回内容包含切分元素
+# 切分加上分组的话，返回内容包含切分元素,如果不想包含匹配分组的话，确保分组为非捕获分组
 In [613]: re.split('([\s,])', 'dsfaf ,afads, fasa ')
 Out[613]: ['dsfaf', ' ', '', ',', 'afads', ',', '', ' ', 'fasa', ' ', '']
 ```

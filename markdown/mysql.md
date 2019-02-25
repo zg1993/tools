@@ -25,6 +25,12 @@
 - group by(分组)
 - join(多表查询)
 
+
+### 配置文件
+- 跳过密码验证： /etc/mysql/mysql.conf.d/mysqld.cnf
+      [mysqld] skip_grant_tables
+
+
 ### 常用语句
 - select count(*) 和order by是最频繁的
 ### msyql的连接操作
