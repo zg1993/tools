@@ -13,7 +13,7 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 
 ## 3. time, datetime, dateutils模块
 - datetime模块 datetime date 相互转化()
-  ```
+  ```python
   # convert date to datetime (int python)
   dt = datetime.now()
   d = date.today()
@@ -25,7 +25,7 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
   # convert datetiem to date
   dt.date()
   ```
-
+- dateutils 获取给定时间段的每一天
 
 - 时间戳转化字符串
 

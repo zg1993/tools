@@ -11,6 +11,9 @@
 
 ## abbreviation
 - GUI: graphical user interface
+- PyPI: python package index
+- PEP：python enhancement proposals python增强建议书
+- GIS: Geographic Information System
 - DRY: don't repeat yourself
 - RPC: remote procedure call
 - REST: repersentational state transfer
@@ -33,3 +36,16 @@
  * dateutil relativedelta
 - 21-02-2019
  * 查找字符串里包含某特定字符的所有单词
+- 25-02-2019
+ * django 多国语言设置
+- 26-02-2019
+ * 算法
+ * asyncio
+ * 爬虫
+ * 500 lines or less
+- 27-02-2019
+ * k8s
+ * (sanic), flask
+ * 生成器代替线程
+ * docker 制作镜像
+ * dash python
