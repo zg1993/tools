@@ -49,3 +49,5 @@
  * 生成器代替线程
  * docker 制作镜像
  * dash python
+ - 28-02-2019
+  * python web 大数据方向
