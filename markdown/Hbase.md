@@ -33,8 +33,9 @@ MapReduce作业(job)是客户端执行的单位: 它包括输入数据,MapReduce
  + transformation(不会引发计算，逻辑操作):flatMap, map, union, reduceByKey
  + action(实际计算):count, collect, saveAsTextFile
 - RDD宽窄依赖：
- +　宽依赖: shuffle
- +　窄依赖：没有shuffle
+  + 宽依赖: shuffle
+  + 窄依赖：没有shuffle
+##### python environment
 
 
 
