@@ -21,10 +21,7 @@
       import pymysql
       pymysql.install_as_MySQLdb()
 - 初始化数据库：python manage.py migrate
-- fields.E304 Reverse accessor clashes in Django
-  * related_name: default:choice_set Question.related_name.all()
-  * related_query default:choice     Question.objects.filter(related_query_name__id=1)
-        The code is wrong because Person will get a reverse relationship back to Person2Person.person, and also to Person2Person.friend; the default name would be Person.person2person_set but Django can't use the same name for both.
+- (1054, u"Unknown column 'focus_article.num_favorites' in 'field list'"): model里字段名和数据库不一致
 ##### migrate
 - python manage.py makemigrations: model层转为迁移文件migration
 - python manage.py showmigrations: 查看迁移文件的执行状态
@@ -35,6 +32,5 @@
 - metaclass
 - functools.total_ordering (比较函数)
 - property
-  - inspect: isclass
-- admin module
- + LazyObject
+  * inspect: isclass
+- importlib

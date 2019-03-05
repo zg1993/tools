@@ -60,8 +60,9 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
   + nmap -sP 192.168.1.0/24 进行ping扫描
     + 其它主机端口开放情况：nmap ip(nmap -sS ip)
     + 本机端口开放查看：netstat -an | grep 3306
+    +  ss -tunl | grep 8000 查看本机监听的端口
 - 访问共享文件：smb://ip
-- 查看软件安装位置： which virtualbox， locate VBox
+- 查看软件安装位置： which virtualbox，locate VBox
 - 通过端口号查找进程： lsof -i:port
  + fd: 111u (u表示文件被打开并处于读取/写入模式 大写的w应用程序对整个文件的写锁)
 - 查看进程占用的端口号：cat /etc/services
