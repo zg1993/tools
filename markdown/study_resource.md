@@ -11,6 +11,8 @@
 
 ## abbreviation
 - GUI: graphical user interface
+- MBA：master business of administration
+- GDP: gross domestic product
 - PyPI: python package index
 - PEP：python enhancement proposals python增强建议书
 - GIS: Geographic Information System
