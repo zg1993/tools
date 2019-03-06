@@ -81,6 +81,36 @@ Out[38]: [1]
 
 ## 问题
 ### 常用术语：
+- 可迭代对象，迭代器，生成器(所有的生成器都是迭代器)
+ + 可迭代对象(可直接作用于for循环的对象)
+            使用 iter 内置函数可以获取迭代器的对象。如果对象实现了能返
+        回迭代器的__iter__方法,那么对象就是可迭代的。序列都可以迭
+        代;实现了 __getitem__ 方法,而且其参数是从零开始的索引,这种
+        对象也可以迭代。
+
+   + from collections import Iterable; isinstance('abc', Iterable) # True
+
+ + 迭代器(可以被next()函数调用并不断返回下一个值，list, str, dict都不是迭代器，没有__next__或者next方法)
+         标准的迭代器接口有两个方法。
+        __next__
+        返回下一个可用的元素,如果没有元素了,抛出 StopIteration
+        异常。
+        __iter__
+        返回 self,以便在应该使用可迭代对象的地方使用迭代器,例如
+        在 for 循环中。
+
+         为什么list、dict、str等数据类型不是Iterator？
+        这是因为Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。
+        Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。
+   + from collections import Iterator; isinstance('abc', Iterator) # False
+   + Iterable->Iterator 使用iter for循环本质上就是通过不断调用next()函数实现的
+               内置的 iter 函数有以下作用。
+            (1) 检查对象是否实现了 __iter__ 方法,如果实现了就调用它,获取
+            一个迭代器。
+            (2) 如果没有实现 __iter__ 方法,但是实现了 __getitem__ 方法,
+            Python 会创建一个迭代器,尝试按顺序(从索引 0 开始)获取元素。
+            (3) 如果尝试失败,Python 抛出 TypeError 异常,通常会提示“C object
+            is not iterable”(C 对象不可迭代),其中 C 是目标对象所属的类。
 - 归约函数：接收可迭代对象返回单个结果
 ### 常用技巧：
 - 匿名函数捕获变量值
