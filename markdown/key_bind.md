@@ -116,6 +116,15 @@ $ git config --global user.email johndoe@example.com
 - 工作区域：working directory, staging area ,git directory(repository)
 - 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）
 
+### 查看提交记录
+- git log --oneline --graph -- dir
+
+### 分支合并
+- 衍合：git checkout dev, git rebase master, solve conflict, add , git rebase --continue, finally git commit -m "rebase", git checkout dev, git reset --hard commit_id, git checkout master ,git merge dev
+
+### 常用技巧
+- 快速提交：git commit -a
+-
 
 ### 4.3 远程分支的管理
  - 查看：git remote show origin(本地分支的查看：git branch -vv)
