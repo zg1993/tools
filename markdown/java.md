@@ -1,15 +1,36 @@
+
+[TOC]
+# java编程思想
+
+## 6. 访问控制权限
+- 类的访问控制权限：
+ * 不带修饰符默认为包访问权限(friendly)
+ * public: 每个编译单元（文件）只能有一个public类
+- 类方法的访问控制权限：
+ * 不带修饰符默认为包访问权限(friendly)
+ * private
+ * project
+ * public
+
 # 1.JAVA 基础
 
 ## 1.1 安装和执行
- - CLASSPATH 和 -cp 可以指定类搜索路径（解决 错误: 找不到或无法加载主类）
+
+-   CLASSPATH 和 -cp 可以指定类搜索路径（解决 错误: 找不到或无法加载主类）
 
 ## 1.2 java 关键字
+
 ### 继承
-- extends
- + 类继承类(java 不支持多继承)
- + 接口继承接口
-![](assets/markdown-img-paste-20181010160054285.png)
-- implements 类继承接口（变相支持多继承）
+
+-   extends
+
+
+-   类继承类(java 不支持多继承)
+-   接口继承接口
+    ![](assets/markdown-img-paste-20181010160054285.png)
+
+
+-   implements 类继承接口（变相支持多继承）
 
 ```java
 public interface A {
@@ -26,39 +47,62 @@ public class C implements A,B {
 ```
 
 ### 接口
-- interface 抽象方法的集合
+
+-   interface 抽象方法的集合
 
 ### 重写(Override)和重载(Overload)
-- Override
- + 子类对父类
- + 参数列表和返回类型不改变
-- Overload
- + 发生在一个类里面
- + 参数类表必须改变
+
+-   Override
+
+
+-   子类对父类
+-   参数列表和返回类型不改变
+
+
+-   Overload
+
+
+-   发生在一个类里面
+-   参数类表必须改变
 
 ### 修饰符
+
 ##### (1)访问修饰符
+
       访问控制修饰符保护对类、变量、方法、构造方法的访问
-- default
-- public
-- private
-- protect
+
+-   default
+-   public
+-   private
+-   protect
 
 ##### (2)非访问修饰符
-- static
- + 静态变量 又称类变量
- + 静态方法 不能使用类的非静态变量
-- final
- + final方法 可以被继承，不能被修改
- + final类 不能被继承
-- abstract
-- synchronized volatile
+
+-   static
+
+
+-   静态变量 又称类变量
+-   静态方法 不能使用类的非静态变量
+
+
+-   final
+
+
+-   final方法 可以被继承，不能被修改
+-   final类 不能被继承
+
+
+-   abstract
+-   synchronized volatile
 
 ### 线程安全
-- StringBuffer(synchronized 同步的) StringBuilder
-- Hashtable(synchronized) HashMap
+
+-   StringBuffer(synchronized 同步的) StringBuilder
+-   Hashtable(synchronized) HashMap
 
 # intellij
+
 #### 引用外部Jar包
+
   具体步骤：
   File -> Project Structure (ctrl + shift + alt + s ) -> Module -> Dependencies -> Add… -> Library… -> Attach Classes.

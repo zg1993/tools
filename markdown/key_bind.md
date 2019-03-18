@@ -100,7 +100,10 @@ $ git config --global user.email johndoe@example.com
   + conflict HEAD 本地的内容
 - 删除分支：git branch -d dev
 - 本地已存在分支关联远程分支： git pull origin master, git branch --upstream-to=...
-- 创建dev分支并且推送到远程：git push origin dev  (其他人使用 git fetch origin, git checkout -b dev origin/dev)
+- 创建dev分支并且推送到远程：git push origin dev
+- 拉取远程分支并创建本地分支
+ + (其他人使用 git fetch origin, git checkout -b dev origin/dev)
+ + git fetch origin 远程分支:本地分支
 - 从本地仓库里移除: git rm -r --cached lisp/derby.log
 - git reflog 查看分支的所以操作记录（包括已经被删除的提交记录
 - git log：
@@ -116,6 +119,15 @@ $ git config --global user.email johndoe@example.com
 - 工作区域：working directory, staging area ,git directory(repository)
 - 文件的状态：modified(作了修改没有放到暂存区), staged(已修改并已提交到暂存区), commited（git 目录保存着特定版本的文件）
 
+### 查看提交记录
+- git log --oneline --graph -- dir
+
+### 分支合并
+- 衍合：git checkout dev, git rebase master, solve conflict, add , git rebase --continue, finally git commit -m "rebase", git checkout dev, git reset --hard commit_id, git checkout master ,git merge dev
+
+### 常用技巧
+- 快速提交：git commit -a
+-
 
 ### 分支管理 与 合并
  - merge 后撤消：git reset --hard 【merge前的版本号】
