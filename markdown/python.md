@@ -45,6 +45,12 @@ Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
 
 ## 4. standard library
 #### 4.1 uuid
+- uuid1(): 基于时间戳
+- uuid2(): 基于分布式计算环境 python没有
+- uuid3(): 基于名字的md5散列
+- uuid4(): 基于随机数
+- uuid5(): 基于名字的sha-1散列
+
 
 #### 4.2 itertools 内置的迭代器
 
@@ -112,6 +118,8 @@ Out[38]: [1]
             (3) 如果尝试失败,Python 抛出 TypeError 异常,通常会提示“C object
             is not iterable”(C 对象不可迭代),其中 C 是目标对象所属的类。
 - 归约函数：接收可迭代对象返回单个结果
+
+
 ### 常用技巧：
 - 匿名函数捕获变量值
 ```python
@@ -138,6 +146,9 @@ Out[38]: [1]
 4
 >>>
  ```
+- except handler
+ + 错误只能被捕获一次
+ + finally 一定会执行，前面return 无效
 
 #### 1.python2 python3区别
 - 统一了字符编码的支持：
@@ -154,3 +165,5 @@ Out[38]: [1]
 - 总结：闭包是一种函数，它会保留定义函数时存在的自由变量的绑定，这样调用函数时，虽然定义作用域不可用了，但是仍能使用那些绑定。（nonlocal python3 解决闭包内不可变类型的更新操作）
 #### 3.GIL golbal interpreter lock
 - GIL是cpython解释器的局限，与python语言无关，Jython和Ironpython没有这种限制
+
+### TLS,SSL,HTTPS

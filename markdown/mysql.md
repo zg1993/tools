@@ -12,7 +12,7 @@
 - show tables;
 - describe user;
 - select *(field) from user;
-- insert(插入)：insert info table (field1, field2) values (value1, value2);
+- insert(插入)：insert into table (field1, field2) values (value1, value2);
 - where(有条件的选取数据，and or用来连接多个条件): select * from user where user='root';
 - update(修改数据)：update table_name set field1=new_value1, field2=new_value2 where clause;
 - delete(删除)：delete from table where clause;(未指定where，删除所有记录)

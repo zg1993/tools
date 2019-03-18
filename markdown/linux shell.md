@@ -80,6 +80,9 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
  ##### iptables
  ##### nslookup
  ##### nc
+ ##### ssh
+ - 端口转发 (-R -L -f(front后台运行) -N -C(compress) -)
+  * 远程转发:
 
 ### 4.expand
 - /sbin/: 基本的系统命令 （只有管理员能运行）
