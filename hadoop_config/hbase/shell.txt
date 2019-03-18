@@ -1,0 +1,8 @@
+put 't', 'row1', 'c:1', 'ab'
+put 't', 'row2', 'c:1', 'ab'
+put 't', 'row3', 'c:1', 'abc'
+put 't', 'row4', 'c:1', 'abd'
+put 't', 'row1', 'c:2', 'abf'
+put 't', 'row1', 'c:3', 'abf'
+put 't', 'row1', 'c:4', 'ab1'
+put "t", "\xff", "c:1", "ab2"
