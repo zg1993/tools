@@ -59,8 +59,10 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
   + cat /proc/net/arp 查看arp缓存表
   + nmap -sP 192.168.1.0/24 进行ping扫描
     + 其它主机端口开放情况：nmap ip(nmap -sS ip)
-    + 本机端口开放查看：netstat -an | grep 3306
+      + nmap 127.0.0.1
+    + 本机端口开放查看：netstat -anlp | grep ":3306"
     +  ss -tunl | grep 8000 查看本机监听的端口
+    + lsof -i:6379
 - 访问共享文件：smb://ip
 - 查看软件安装位置： which virtualbox，locate VBox
 - 通过端口号查找进程： lsof -i:port
