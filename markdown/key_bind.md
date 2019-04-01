@@ -129,16 +129,11 @@ $ git config --global user.email johndoe@example.com
 - 快速提交：git commit -a
 -
 
-### 分支管理 与 合并
- - merge 后撤消：git reset --hard 【merge前的版本号】
- - git checkout master 1.c: 1.c 文件改成master分支head版本
-
 ### 4.3 远程分支的管理
  - 查看：git remote show origin(本地分支的查看：git branch -vv)
  - 删除远程分支：git push origin :delete_branch
 
 ### 4.4 撤销操作
-- 暂存：git stash list --date=local
 - add后：git reset HEAD file_name
 - commit后（回到上一步，git reset --soft HEAD^）:
  + 追加提交：git add file_name; git commit --amend
