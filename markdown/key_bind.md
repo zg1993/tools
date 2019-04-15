@@ -63,6 +63,20 @@
 - 重复上一个命令: ctrl-x z
 - 跳转到指定行: M-g M-g
 - 替换: M-%
+- 括号跳转
+
+### 2.2 配置文件
+##### 包管理相关
+- v:package-archives
+- loop not define : require 'cl
+```emacs24
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
+```
+- f:package-installed-p 包是否安装
+
+
 # 3、Sublime
 ### 3.1 Key Binding
 - split screen: alt+Shift+2

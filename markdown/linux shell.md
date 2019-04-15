@@ -81,10 +81,16 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
  ##### netstat
  ##### iptables
  ##### nslookup
- ##### nc(netcat)
+ ##### nc
+ - 测试对应ip的端口是否开发：nc -vz 10.27.131.229 1883
  ##### ssh
- - 端口转发 (-R -L -f(front后台运行) -N -C(compress) -)
-  * 远程转发:
+ - 端口转发 (-R(remote) -L(local) -f(front后台运行) -N -C(compress) -)
+  * 要求：server(192.168.1.37)8002开启了hbase rest 服务 需要能在zhou(192.168.1.186)8001端口能访问(example: http://192.168.1.186:8001)
+  * server远程转发: ssh 8001:127.0.0.1:8002 zhou@192.168.1.186:访问192.168.1.186的8001端口等同访问127.0.0.1的8002端口
+  * zhou本地转发: ssh -fCNL 8001:localhost:8002 zhou@192.168.1.37
+  * 同上ssh -fCNL 8001:127.0.0.1:8001 server@192.168.1.37
+  * 同上ssh -fCNL 8001:localhost:8001 server@192.168.1.37
+
 
 ### 4.expand
 - /sbin/: 基本的系统命令 （只有管理员能运行）
