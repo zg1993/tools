@@ -109,6 +109,10 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 - 启动 docker-compose up
 
 
+### frequently question answer
+- 容器访问本机端口：docker0的地址：端口
+
+
 ### 配置文件事例
 
 #### Dockerfile

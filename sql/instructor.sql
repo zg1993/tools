@@ -2,7 +2,7 @@ insert into instructor
 values
 (22222, 'Einstein', 'Physics', 95000),
 (12121, 'Wu', 'Finance', 90000),
-(34343, 'El Said', 'History', 60000),
+(32343, 'El Said', 'History', 60000),
 (45565, 'Katz', 'Comp.Sci.', 75000),
 (98345, 'Kim', 'Elec.Eng.', 80000),
 (76766, 'Crick', 'Biology', 72000),

@@ -24,6 +24,7 @@ create table if not exists `course`
 	foreign key (dept_name) references department(dept_name)
        ) charset=utf8;
 
+
 create table if not exists `section`
        (course_id varchar(8),
         sec_id varchar(8),
@@ -31,7 +32,7 @@ create table if not exists `section`
 	year numeric(4,0),
 	building varchar(20),
 	room_number varchar(7),
-	tiem_slot_id varchar(4),
+	time_slot_id varchar(4),
 	primary key (course_id, sec_id, semester, year),
 	foreign key (course_id) references course (course_id)
        ) charset=utf8;
