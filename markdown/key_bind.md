@@ -148,6 +148,7 @@ $ git config --global user.email johndoe@example.com
  - 删除远程分支：git push origin :delete_branch
 
 ### 4.4 撤销操作
+- git pull conflict: git reset --hard FETCH_HEAD
 - add后：git reset HEAD file_name
 - commit后（回到上一步，git reset --soft HEAD^）:
  + 追加提交：git add file_name; git commit --amend
