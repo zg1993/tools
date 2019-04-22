@@ -4,7 +4,8 @@
 
  - web
   * Awesome Django @ https://github.com/wsvincent/awesome-django
-Awesome Python @ https://github.com/vinta/awesome-python
+  * Awesome Python @ https://github.com/vinta/awesome-python
+  * https://djangopackages.org/
 
 
 
