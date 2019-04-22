@@ -112,6 +112,9 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 - cp -r lua csapp/lua: 在csapp目录下创建lua目录,将lua下的内容copy
 
 ### 系统配置
+#### 常见信息
+- load average(w): cup工作量的度量, 进程队列长度, 1min, 5min, 15min平均负载(linux每5秒采样一次)
+
 #### /proc
 ```
 # 总核数 = 物理CPU个数 X 每颗物理CPU的核数

@@ -2,6 +2,10 @@
  * [python study tutorials ](https://medium.mybridge.co/python-top-45-tutorials-for-the-past-year-v-2018-1b4d46c9e857)
  * [python dive into python](https://woodpecker.org.cn/diveintopython/)
 
+ - web
+  * Awesome Django @ https://github.com/wsvincent/awesome-django
+Awesome Python @ https://github.com/vinta/awesome-python
+
 
 
 ## Task
@@ -59,4 +63,3 @@
 - 12-03-2019
   * git 合并和衍合
   * nginx 面试题
-  
