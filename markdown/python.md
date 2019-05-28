@@ -4,6 +4,9 @@
 # format 特殊字符
 In [839]: u"^[\u4e00-\u9fff\w]{{{0},{1}}}$".format(1,3)
 Out[839]: u'^[\u4e00-\u9fff\\w]{1,3}$'
+
+In [214]: print u'\x5Cu4fdd\x5Cu5b58\x5Cu4e0d\x5Cu5f53\x5Cu62a5\x5Cu5e9f'.decode('unicode-escape')
+
 ```
 
 
