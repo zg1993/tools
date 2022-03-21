@@ -14,7 +14,7 @@ create table if not exists `instructor`
 	primary key (ID),
 	foreign key (dept_name) references department(dept_name)
        ) charset=utf8;
-
+# 课程信息
 create table if not exists `course`
        (course_id varchar(7),
         title varchar(50),
@@ -25,9 +25,10 @@ create table if not exists `course`
        ) charset=utf8;
 
 
+# 开课信息
 create table if not exists `section`
-       (course_id varchar(8),
-        sec_id varchar(8),
+       (course_id varchar(8), # 课程号
+        sec_id varchar(8), # 课序号
 	semester varchar(6),
 	year numeric(4,0),
 	building varchar(20),
@@ -36,7 +37,7 @@ create table if not exists `section`
 	primary key (course_id, sec_id, semester, year),
 	foreign key (course_id) references course (course_id)
        ) charset=utf8;
-
+#所有教师被分配要教的课信息
 create table if not exists `teaches`
        (ID varchar(5),
         course_id varchar(8),
@@ -57,7 +58,7 @@ create table if not exists `student`
 	foreign key (dept_name) references department (dept_name)
        ) charset=utf8;
        
-
+# 学生的选课信息
 create table if not exists `takes`
        (ID varchar(5),
         course_id varchar(8),
