@@ -146,6 +146,12 @@ $ git config --global user.email johndoe@example.com
 ### 4.3 远程分支的管理
  - 查看：git remote show origin(本地分支的查看：git branch -vv)
  - 删除远程分支：git push origin :delete_branch
+### 初次关联github
+ - git branch --set-upstream-to=origin/master master
+ - 解决fatal: refusing to merge unrelated histories:git pull origin master --allow-unrelated-histories
+ - 查看远程分支关联情况
+   * 跟踪情况 git remote show origin
+   * 关联情况 git branch -r
 
 ### 4.4 撤销操作
 - git pull conflict: git reset --hard FETCH_HEAD
