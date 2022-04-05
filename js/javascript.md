@@ -74,3 +74,23 @@
   Object.prototype.toString.call(undefined) ; // [object Undefined]
   ```
 
+### 原型链
+
+通过一个构造函数创建出来的多个实例，如果都要添加一个方法，给每个实例去添加并不是一个明智的选择。这时就该用上原型了。
+
+在实例的原型上添加一个方法，这个原型的所有实例便都有了这个方法。
+
+```
+var M = function (name) { this.name = name; }
+var o3 = new M('o3')var 
+o5 = new M()
+o3.__proto__.say=furnction(){
+   console.log('hello world')
+}
+
+o3.say()
+o5.say()
+```
+
+按照JS引擎的分析方式，在访问一个实例的属性的时候，现在实例本身中找，如果没找到就去它的原型中找，还没找到就再往上找，直到找到。这就是原型链。(当我们用`obj.xxx`访问一个对象的属性时，JavaScript引擎先在当前对象上查找该属性，如果没有找到，就到其原型对象上找，如果还没有找到，就一直上溯到`Object.prototype`对象，最后，如果还没有找到，就只能返回`undefined`。)
+
