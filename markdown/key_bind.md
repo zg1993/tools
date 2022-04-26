@@ -96,6 +96,10 @@
  /etc/init.d/networking restart
 ```
 ### 4.1 Command
+查看配置信息
+- git config --global  --list
+- git config --local  --list
+
 ```bash
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
@@ -146,7 +150,10 @@ $ git config --global user.email johndoe@example.com
 ### 4.3 远程分支的管理
  - 查看：git remote show origin(本地分支的查看：git branch -vv)
  - 删除远程分支：git push origin :delete_branch
+ - 创建新分支：git checkout -b feature-test 创建分支并切换到新分支
+  git push origin feature-test:feature-test 将新分支推送到远程（远程推送成功）再次提交不能直接 git push。
 ### 初次关联github
+ - git checkout -b dev(本地分支名称) origin/develop(远程分支名称) 创建本地关联远程
  - git branch --set-upstream-to=origin/master master
  - 解决fatal: refusing to merge unrelated histories:git pull origin master --allow-unrelated-histories
  - 查看远程分支关联情况

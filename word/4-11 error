@@ -1,0 +1,7 @@
+nonIterableRest.js:2 Uncaught (in promise) TypeError: Invalid attempt to destructure non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.
+
+渲染组件的初始化数据不正常
+
+4-13error:
+a-table 选择一直全选指定了相同的row-key 
