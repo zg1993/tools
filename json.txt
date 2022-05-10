@@ -1,0 +1,14 @@
+{
+  "code": 200,
+  "data": {
+    "applyPolicyType": {
+      "01": 17
+    },
+    "applyDays": {
+      "20220505": 1
+    }
+  },
+  "msg": "OK",
+  "resultCode": "",
+  "success": true
+}
