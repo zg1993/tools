@@ -1,7 +1,8 @@
 # 1、Atom
 - 同步配置
  1. apm install sync-settings
- 1. paste gitid and personalaccesstoken
+ 1. paste gitid and personalaccesstoken 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
+ 1. paste gitid and personalaccesstoken 
  2. sync-setting:restore
 ### 1.1、Key Binding:
   - 查找文件 ctrl-t
