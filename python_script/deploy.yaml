@@ -1,0 +1,15 @@
+# name-test 表示测试服，不带-test后缀的表示生产服 
+# build-command: 不填默认使用<yarn build>
+#
+gwtph-test: # 项目标识唯一
+  project_path: /home/zg/work/gwtph-mms-frontend # 项目目录
+  server_deploy_path: /etc/nginx/html # 服务器部署路径
+  package_name: gwtph-web # 服务器部署路径下的包名
+  server_ip: 192.168.10.8 # 服务器ip地址
+  build_command: yarn build # 默认使用<yarn build>可省略
+
+gwtph-h5-test:
+  project_path: /home/zg/work/h5
+  server_deploy_path: /etc/nginx/html 
+  package_name: gwtph-h5
+  server_ip: 192.168.10.8
