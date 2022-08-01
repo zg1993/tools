@@ -10,12 +10,13 @@ gwtph-test项目标识 yaml文件配置
 import os
 import sys
 import argparse
+from click import command
 import yaml
 
 BASE_PATH = os.path.dirname(__file__)
-PACKAGE_NAME = 'gwtph-web'
-SERVER_PATH = '/etc/nginx/html'
-HOSTNAME = 'serve108'
+# PACKAGE_NAME = 'gwtph-web'
+# SERVER_PATH = '/etc/nginx/html'
+# HOSTNAME = 'serve108'
 
 
 def parser_yaml():
@@ -24,64 +25,68 @@ def parser_yaml():
         return yaml.safe_load(f.read()) 
 
 
-
-def build_package(branch, package_name=PACKAGE_NAME):
-    os.chdir(BASE_PATH)
-    os.system('git checkout ' + branch)
-    os.system('git pull')
-    os.system('yarn build')
-    if not os.path.exists('dist'):
-        print('build failed')
-        return
-    os.system('mv dist ' + package_name)
+def test_ssh_connect(server_ip='', **kwargs):
+    print(server_ip)
+    test_command = "ssh root@{0} echo 'connect success'".format(server_ip) 
+    # test_command = 'ssh root@{0} pwd'.format('192.168.10.157') 
+    c = os.system(test_command)
+    if(os.system(test_command) != 0):
+        return False
     return True
 
 
-def ssh_deploy(hostname='serve108'):
-    dir_path = os.path.join(SERVER_PATH, PACKAGE_NAME)
-    dir_path_backup = dir_path + '_backup'
-    print('server pwd: ' + dir_path)
-    command_backup = "mv " + dir_path + ' ' + dir_path_backup
-    print('executing backup ssh command: ' + command_backup)
-    os.system('ssh root@' + hostname + ' ' + command_backup)
-    # print('execut success')
-    package_path = os.path.join(BASE_PATH, PACKAGE_NAME)
-    print(package_path)
-    command_scp = "scp -r " + package_path + ' ' + 'root@' + hostname + ':' + SERVER_PATH
-    print('executing scp command: ' + command_scp)
-    os.system(command_scp)
-    # print('execut success')
-    command_rm = "rm -rf " + dir_path_backup
-    print('executing rm  ssh command: ' + command_rm)
-    os.system('ssh root@' + hostname + ' ' + command_rm)
+def build_package(branch, project_path='', package_name='', build_command='yarn build', **kwargs):
+    os.chdir(project_path)
+    os.system('git checkout ' + branch)
+    os.system('git pull')
+    print('executing: {0}'.format(build_command))
+    os.system(build_command)
+    if not os.path.exists('dist'):
+        print('build failed')
+        return False
+    os.system('mv dist ' + package_name)
+    return True
+
+def backup_dist():
+    pass
+
+def ssh_deploy(server_ip='', server_deploy_path='', package_name='', project_path='', **kwargs):
+    # backup
+    package_dir = os.path.join(server_deploy_path, package_name)
+    package_backup_dir = package_dir + '_backup'
+    backup_command = "mv {0} {1}".format(package_dir, package_backup_dir)
+    print('executing backup ssh command: ' + backup_command)
+    os.system('ssh root@' + server_ip + ' ' + backup_command)
+    # scp translate
+    package_dir_local = os.path.join(project_path, package_name)
+    scp_command = "scp -r {0} root@{1}:{2}".format(package_dir_local, server_ip,server_deploy_path)
+    print('executing scp command: ' + scp_command)
+    os.system(scp_command)
+    # 删除服务器备份包
+    rm_command = "rm -rf {0}".format(package_backup_dir)
+    print('executing rm  ssh command: ' + rm_command)
+    os.system('ssh root@' + server_ip + ' ' + rm_command)
     print('deploy success')
-    os.system('rm -rf' + ' ' + os.path.join(BASE_PATH, PACKAGE_NAME))
+    # delete local dist
+    os.system('rm -rf' + ' ' + os.path.join(BASE_PATH, package_dir_local))
 
 def deploy(project, branch):
     server_dict = parser_yaml()
     # print(server_dict)
     if (project not in server_dict):
-        print('%s not config, please add to deploy.yaml'%(project))
-        return
+        return print('%s not config, please add to deploy.yaml'%(project))
     deploy_info = server_dict.get(project)
+    if(not test_ssh_connect(**deploy_info)):
+        return print('unable to connect {server_ip}'.format(**deploy_info))
+    if(build_package(branch, **deploy_info)):
+        ssh_deploy(**deploy_info)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('project', help='项目标识必填yaml文件配置')
     parser.add_argument('--branch', help='发布分支名称，默认使用dev')
-    # print(sys.argv)
     args = parser.parse_args()
     project = args.project
     branch = args.branch or 'dev'
     deploy(project, branch)
-    # branch = 'dev'
-    # if len(sys.argv) > 1:
-    #     branch = sys.argv[1]
-    # if build_package(branch):
-    #     ssh_deploy(HOSTNAME)
-
-# os.chdir('')
-# os.system("rm -rf dist")
-# os.system("yarn build")
-# os.system("mv dist gwtph-web")
