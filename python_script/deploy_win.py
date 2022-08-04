@@ -4,7 +4,7 @@
 前段测试环境自动化部署
 放在前段项目根目录下
 gwtph-test项目标识 yaml文件配置
-使用python deploy.py <gwtph-test> --branch <branch>
+使用python deploy.py <gwtph-web> --branch <branch>
 '''
 
 import os
@@ -28,6 +28,7 @@ def parser_yaml():
         return yaml.safe_load(f.read())
 
 
+# 将本地的~/.ssh/id_rsa.pub 内容追加到服务器 /root/.ssh/authorized_keys文件中（服务器运行echo "公钥内容" >>/root/.ssh/authorized_keys ）
 def test_ssh_connect(server_ip='', **kwargs):
     print('test connect {} ...'.format(server_ip))
     command_args = ['ssh', 'root@{}'.format(server_ip), "echo 'hello'"]
@@ -106,8 +107,8 @@ def deploy(project, branch):
         return print('unable to connect {server_ip}'.format(**deploy_info))
     else:
       print('connected {}'.format(deploy_info['server_ip']))
-    # if(build_package(branch, **deploy_info)):
-    if(1):
+    if(build_package(branch, **deploy_info)):
+    # if(1):
         ssh_deploy(**deploy_info)
 
 
