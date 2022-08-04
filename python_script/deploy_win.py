@@ -8,7 +8,7 @@ gwtph-test项目标识 yaml文件配置
 '''
 
 import os
-import sys
+# import sys
 import argparse
 import yaml
 import subprocess
@@ -56,9 +56,9 @@ def backup_dist(server_ip, server_deploy_path, package_dir,package_name, back_nu
     command_args = ['ssh', 'root@{}'.format(server_ip), 'ls {}'.format(server_deploy_path)]
     result_ls = subprocess.check_output(command_args, encoding='utf8')
     file_list = result_ls.split('\n')
-    backup_name_list = filter(lambda i:i.startswith(package_name), file_list)
+    backup_name_list = filter(lambda i:i.startswith(package_name + '_'), file_list)
 
-    if (len(list(backup_name_list))>=5):
+    if (len(list(backup_name_list))>=back_nums-1):
         rm_file = sorted(backup_name_list)[0]
         rm_file_path = os.path.join(server_deploy_path, rm_file)
         if(OS == 'Windows'):
