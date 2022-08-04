@@ -1,0 +1,24 @@
+# name 表示测试服，带-pro后缀的表示生产服
+# build-command: 不填默认使用<yarn build>
+#
+gwtph-web: # 项目标识唯一
+  # project_path: /d/work/gwtph-mms-frontend # 项目目录 linux
+  project_path: D:\work\gwtph-mms-frontend # 项目目录 windows
+  server_deploy_path: /etc/nginx/html # 服务器部署路径
+  package_name: gwtph-web # 服务器部署路径下的包名
+  server_ip: 192.168.10.8 # 服务器ip地址
+  user: root # 服务器登录用户，默认使用root可省略
+  build_command: yarn build # 默认使用<yarn build>可省略
+
+gwtph-h5:
+  project_path: /home/zg/work/h5
+  server_deploy_path: /etc/nginx/html
+  package_name: gwtph-h5
+  server_ip: 192.168.10.8
+
+wdfz-h5:
+  project_path: /home/zg/work/wdfz-h5
+  server_deploy_path: /usr/local/nginx/html
+  package_name: wdfz-h5
+  server_ip: 192.168.10.157
+  build_command: npm run build:test
