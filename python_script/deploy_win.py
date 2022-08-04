@@ -56,9 +56,10 @@ def backup_dist(server_ip, server_deploy_path, package_dir,package_name, back_nu
     command_args = ['ssh', 'root@{}'.format(server_ip), 'ls {}'.format(server_deploy_path)]
     result_ls = subprocess.check_output(command_args, encoding='utf8')
     file_list = result_ls.split('\n')
-    backup_name_list = filter(lambda i:i.startswith(package_name + '_'), file_list)
-
-    if (len(list(backup_name_list))>=back_nums-1):
+    backup_name_list = list(filter(lambda i:i.startswith(package_name + '_'), file_list))
+    # print(list(backup_name_list))
+    if (len(backup_name_list)>=back_nums-1):
+        # print(sorted(backup_name_list))
         rm_file = sorted(backup_name_list)[0]
         rm_file_path = os.path.join(server_deploy_path, rm_file)
         if(OS == 'Windows'):
@@ -105,8 +106,8 @@ def deploy(project, branch):
         return print('unable to connect {server_ip}'.format(**deploy_info))
     else:
       print('connected {}'.format(deploy_info['server_ip']))
-    if(build_package(branch, **deploy_info)):
-    # if(1):
+    # if(build_package(branch, **deploy_info)):
+    if(1):
         ssh_deploy(**deploy_info)
 
 
